@@ -19,7 +19,7 @@ if [ -z "$MPID" ] ; then
   exit 0
 fi
 
-$SSH -F $SSH_CONFIG -N -L $LOCAL_PORT:$TARGET_HOST:$TARGET_PORT $GATEWAY &
+$SSH -F $SSH_CONFIG -o StrictHostKeyChecking=no -N -L $LOCAL_PORT:$TARGET_HOST:$TARGET_PORT $GATEWAY &
 CPID=$!
 
 while true ; do
