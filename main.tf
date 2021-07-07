@@ -2,7 +2,6 @@
 locals {
   gw_prefix = (var.gateway_user == "" ? "" : "${var.gateway_user}@")
 }
-  
 
 data external free_port {
   program = [
@@ -13,7 +12,6 @@ data external free_port {
 }
 
 data external ssh_tunnel {
-  count = (var.create ? 1 : 0)
   program = [
     var.shell_cmd,
     "${path.module}/tunnel.sh",

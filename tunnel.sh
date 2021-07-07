@@ -11,7 +11,9 @@ MPID="$9"
 ABSPATH=$(cd "$(dirname "$0")"; pwd -P)
 
 if [ -z "$MPID" ] ; then
-  echo '{}'
+  echo -n '{"port": "'
+  echo -n $LOCAL_PORT
+  echo -n '"}'
   p=`ps -p $PPID -o "ppid="`
   nohup timeout $TIMEOUT bash "$ABSPATH/tunnel.sh" "$@" $p <&- >&- 2>&- &
   # Allow the tunnel to fully establish
